@@ -444,6 +444,7 @@ HdxColorCorrectionTask::_CreateOpenColorIOResourcesImpl(
 
         // Sampler description
         HgiSamplerDesc sampDesc;
+        sampDesc.debugName = samplerName;
         sampDesc.magFilter =
             interpolation == OCIO::Interpolation::INTERP_NEAREST ?
                 HgiSamplerFilterNearest : HgiSamplerFilterLinear;
