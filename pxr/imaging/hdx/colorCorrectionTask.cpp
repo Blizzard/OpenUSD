@@ -454,9 +454,14 @@ HdxColorCorrectionTask::_CreateOpenColorIOResourcesImpl(
         sampDesc.addressModeU = HgiSamplerAddressModeClampToEdge;
         sampDesc.addressModeV = HgiSamplerAddressModeClampToEdge;
 
+        std::vector<float> lutVector = std::vector<float>(
+            lutValues,
+            lutValues + (valueCount * sizeof(float))
+        );
+
         result->luts.emplace_back(
             _TextureSamplerDesc{
-                texDesc, sampDesc, float4AdaptedLutValues});
+                texDesc, sampDesc, lutVector});
     }
 
     //
